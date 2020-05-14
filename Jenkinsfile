@@ -6,6 +6,7 @@ pipeline {
 				git 'https://github.com/qidongx/RestAssuredBDD.git'
 				echo "Code checked out from GitHub successfully!";
 			}		
+		}
 		stage('Compile') {
 			steps {
 				sh label: '', script: 'build.sh'
