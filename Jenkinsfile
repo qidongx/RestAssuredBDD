@@ -3,7 +3,8 @@ pipeline {
 	stages {
 		stage('Compile') {
 			steps {
-				echo "Compiled Successfully!";
+				sh label: '', script: 'build.sh'
+				echo "Compiled using build.sh successfully!";
 			}
 		}
 		stage('JUnit') {
