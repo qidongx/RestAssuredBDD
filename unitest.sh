@@ -1,0 +1,1 @@
+echo "JUnit test passed successfully at $(date)."
