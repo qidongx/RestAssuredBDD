@@ -1,1 +1,1 @@
-echo "Project built successfully at $(date)"
+echo "Project built on localhost successfully at $(date)"
