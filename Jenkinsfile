@@ -3,15 +3,13 @@ pipeline {
 	stages {
 		stage('Checkout project from GitHub') {
 			steps {
-				git 'https://github.com/qidongx/RestAssuredBDD.git'
+				git 'https://github.com/qidongx/RestAssuredBDD.git';
 				echo "Code checked out from GitHub successfully!";
-				sudo chmod +x build.sh;
-				echo "shell scripts exec permission granted."
 			}		
 		}
 		stage('Compile') {
 			steps {
-				sh label: '', script: 'build.sh'
+				sh label: '', script: 'build.sh';
 				echo "Compiled using build.sh successfully!";
 			}
 		}
