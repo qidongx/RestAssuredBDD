@@ -9,7 +9,7 @@ pipeline {
 		}
 		stage('Compile') {
 			steps {
-				sh label: '', script: 'pipeline_GitHub/build.sh';
+				sh label: '', script: './build.sh';
 				echo "Compiled using build.sh successfully!";
 			}
 		}
