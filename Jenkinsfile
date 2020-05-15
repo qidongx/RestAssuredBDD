@@ -1,7 +1,5 @@
 pipeline {
-	agent {
-		label 'node1'
-	} 
+	agent any
 	stages {
 		stage('Checkout project from GitHub') {
 			steps {
@@ -15,19 +13,39 @@ pipeline {
 				echo "Compiled using build.sh successfully!";
 			}
 		}
-		stage('Unit Testing') {
+		stage('Unit Test') {
 			steps {
 				sh label: '', script: './unitest.sh';
 				echo "JUnit test passed successfully!";
 			}
 		}
-		stage('Regression Testing'){
+		stage('Regression Test'){
 			steps {
 				sh label: '', script: './regressionTest.sh';
 				echo "Regression test passed successfully!";
 			}
 		}
-		stage('Deploying'){
+		stage("Parallel performance test.") {
+			parallel {
+				stage('Test on Master'){
+					agent {
+						label "master"
+					}
+					steps {
+						echo "Running on master."
+					}
+				}
+				stage('Test on slave') {
+					agent {
+						label "node1"
+					}
+					steps {
+						echo "Running on slave."
+					}
+				}
+			}
+		}
+		stage('Deploy'){
 			steps {
 				sh label: '', script: './deploy.sh';
 				echo "Deployed successfully!";
