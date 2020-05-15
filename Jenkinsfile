@@ -1,30 +1,33 @@
 pipeline {
 	agent any 
 	stages {
-		stage('Checkout project from GitHub') {
+		stage('Checkout project from GitHub......') {
 			steps {
 				git 'https://github.com/qidongx/RestAssuredBDD.git';
 				echo "Code checked out from GitHub successfully!";
 			}		
 		}
-		stage('Compile') {
+		stage('Build......') {
 			steps {
-				sh label: '', script: './build.sh';
+				sh label: '', script: './build.sh';   //MUST have "./" in front of filename in order for the shell to find it.
 				echo "Compiled using build.sh successfully!";
 			}
 		}
-		stage('JUnit') {
+		stage('Unit Testing......') {
 			steps {
+				sh label: '', script: './unitest.sh';
 				echo "JUnit test passed successfully!";
 			}
 		}
-		stage('Regression Test'){
+		stage('Regression Testing......'){
 			steps {
+				sh label: '', script: './regressionTest.sh';
 				echo "Regression test passed successfully!";
 			}
 		}
-		stage('Deploy'){
+		stage('Deploying......'){
 			steps {
+				sh label: '', script: './deploy.sh';
 				echo "Deployed successfully!";
 			}
 		}
