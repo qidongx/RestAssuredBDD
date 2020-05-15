@@ -5,6 +5,8 @@ pipeline {
 			steps {
 				git 'https://github.com/qidongx/RestAssuredBDD.git'
 				echo "Code checked out from GitHub successfully!";
+				sudo chmod +x build.sh;
+				echo "shell scripts exec permission granted."
 			}		
 		}
 		stage('Compile') {
